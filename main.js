@@ -3,25 +3,21 @@ const student = [
     id: 1,
     name: "Harry",
     house: "Ravenclaw",
-    color: "Blue"
   },
   {
     id: 2,
     name: "Sparkles",
     house: "Slytherin",
-    color: "Black"
   },
   {
     id: 3,
     name: "Donald",
     house: "Hufflepuff",
-    color: "Yellow"
   },
   {
     id: 4,
     name: "Yawn",
     house: "Gryffindor",
-    color: "Green"
   },
 ];
 
@@ -95,6 +91,9 @@ const filter = (array, houseString) => {
 // const form = document.querySelector('form');
 
 const formButton = document.querySelector("#addStudentButton");
+
+
+
 const renderForm = () => {
   const form = `
   <form>
@@ -111,14 +110,28 @@ const renderForm = () => {
 
 formButton.addEventListener('click', renderForm);
 
+// const form = document.querySelector('form');
+
+// const createStudent = (e) => {
+//   e.preventDefault();
+
 const newStudentObj = {
-  id: member.length + 1,
-  name: document.querySelector("#name").value,
+  id: members.length + 1,
+  name: document.querySelector("#exampleInputName1").value,
   house: "Slytherin",
 };
 
-member.push(newStudentObj);
+members.push(newStudentObj);
 cardsOnDOM(student);
 form.reset();
 
-form.addEventListener('Sort!', createStudent);
+
+formButton.addEventListener('submit', createStudent);
+
+// const addStudentButton = document.querySelector("#addStudentButton");
+// addStudentButton.addEventListener("click", renderForm);
+
+// const addStudentButton = document.querySelector("#addStudnetForm");
+// addStudentButton.addEventListener("submit", createStudent);
+
+const app = document.querySelector("#app");
