@@ -2,17 +2,26 @@ const student = [
   {
     id: 1,
     name: "Harry",
-    house: "Ravenclaw"
+    house: "Ravenclaw",
+    color: "Blue"
   },
   {
     id: 2,
-    name: "Sparkles"
-    house: "Slythine"
+    name: "Sparkles",
+    house: "Slytherin",
+    color: "Black"
   },
   {
     id: 3,
-    name: "Donald"
-    house: "Hufflepuff"
+    name: "Donald",
+    house: "Hufflepuff",
+    color: "Yellow"
+  },
+  {
+    id: 4,
+    name: "Yawn",
+    house: "Gryffindor",
+    color: "Green"
   },
 ];
 
@@ -23,96 +32,93 @@ const renderToDOM = (divID, htmlToRender) => {
 
 const cardsOnDOM = (array) => {
   let domString = "";
-  for (const student of array){
+  for (const member of array) {
     domString += `<div class="card" style="width:18rem;">
-    <div class="card-body"
-    <p class="card-text">${student.name}</p>
-    <p class="card-text">${student.house}</p> 
-    <button class="btn btn-danger" id="expel--${student.id}">Expel</button>
-    </div>
+      <div class="card-body">
+      <p class="card-text">${member.name}</p>
+      <p class="card-text">${member.house}</p> 
+      <button class="btn btn-danger" id="expel--${member.id}">Expel</button>
+      </div>
     </div>`;
   }
-
   renderToDOM("#app", domString);
-}
-cardsOnDOM(students);
+};
 
-const filter = (array, typeString) => {
-  const typeArray = [];
+cardsOnDOM(student);
 
-  for (const student of array) {
-    if (student.house === typeString) {
-      typeArray.push(student);
+const filter = (array, houseString) => {
+  const houseArray = [];
+
+  for (const member of array) {
+    if (member.house === houseString) {
+      houseArray.push(member);
     }
   }
-  return typeArray;
-}
-   const showAllButton= document.querySelector("#All");
-   const showGryffindorButton= document.querySelector("#Gryffindor");
-   const showHufflepuffButton= document.querySelector("#Hufflepuff");
-   const showRavenclawButton= document.querySelector("#Ravenclaw");
-   const showSlytherineButton= document.querySelector("#Slytherine");
+  return houseArray;
+};
 
-   showAllButton.addEventListener('click', () => {
-    cardsOnDOM(student);
-   });
+// const showAllButton = document.querySelector("#All");
+// const showGryffindorButton = document.querySelector("#Gryffindor");
+// const showHufflepuffButton = document.querySelector("#Hufflepuff");
+// const showSlytherinButton= document.querySelector("#Slytherin");
 
-   showGryffindorButton.addEventListener('click', () => {
-    const gryffindorHouseType = filter(student, 'Gryffindor');
-    cardsOnDOM(gryffindorHouseType);
-   });
-
-   showHufflepuffButton.addEventListener('click', () => {
-    const hufflepuffHouseType = filter(student, 'Hufflepuff');
-    cardsOnDOM(hufflepuffHouseType);
-   });
-
-   showRavenclawButton.addEventListener('click', () => {
-    const ravenclawHouseType = filter(student, 'Ravenclaw');
-    cardsOnDOM(ravenclawHouseType);
-   });
-
-   showSlytherineButton.addEventListener('click', () => {
-    const slytherineHouseType = filter(student, 'Slytherine');
-    cardsOnDOM(gryffindorHouseType);
-   });
-
-   const form = document.querySelector('form');
-
-   const createStudent = (e) => {
-    e.preventDefault();
-
-    const newStudentObj = {
-      id: student.length + 1,
-      name: document.querySelector("#name").value,
-      house: document.querySelector("#house").house,
-    };
-   
-  student.push(newStudentObj);
-  cardsOnDOM(student);
-  form.reset();
-   }
-
-   form.addEventListener('submit', createStudent);
-
-   const app = document.querySelector("#app");
-
-   app.addEventListener('click', (e) => {
-    if (e.target.id.includes("expel"))
-   })
-
-// app.addEventListener('click', (e) => {
-// if (e.target.id.includes("delete")) {
-//   const [, id] = e.target.id.split("--");
-//   const index = pets.findIndex(e => e.id === Number(id));
-//   console.log(index);
-//   pets.splice(index, 1);
-//   cardsOnDOM(pets);
-// }
+// showAllButton.addEventListener('click', () => {
+//   cardsOnDOM(student);
 // });
 
-// const startApp =() => {
-// cardsOnDOM(pets);
-// }
+// showGryffindorButton.addEventListener('click', () => {
+//   const gryffindorHouseType = filter(member, 'Gryffindor');
+//   cardsOnDOM(gryffindorHouseType);
+// });
 
-// startApp();
+// showHufflepuffButton.addEventListener('click', () => {
+//   const hufflepuffHouseType = filter(member, 'Hufflepuff');
+//   cardsOnDOM(hufflepuffHouseType);
+// });
+
+// showRavenclawButton.addEventListener('click', () => {
+//   const ravenclawHouseType = filter(member, 'Ravenclaw');
+//   cardsOnDOM(ravenclawHouseType);
+// });
+
+// showSlytherinButton.addEventListener('click', () => {
+//   const slytherinHouseType = filter(member, 'Slytherin');
+//   cardsOnDOM(slytherinHouseType);
+// });
+
+// const arr = ['ravenclaw','gryffindor','slytherin','hufflepuff'];
+// const output = document.querySelector('.filterContainer');
+// sortArr();
+// output.addEventListener('click', sortArr);
+ 
+
+// const form = document.querySelector('form');
+
+const formButton = document.querySelector("#addStudentButton");
+const renderForm = () => {
+  const form = `
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputName1" class="form-label"> Enter First Year Student's Name</label>
+      <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Luna Lovegood">
+      <div id="nameHelp" class="form-text"></div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sort!</button>
+  </form>
+  `
+  renderToDOM('#addStudentForm', form);
+}
+
+formButton.addEventListener('click', renderForm);
+
+const newStudentObj = {
+  id: member.length + 1,
+  name: document.querySelector("#name").value,
+  house: "Slytherin",
+};
+
+member.push(newStudentObj);
+cardsOnDOM(student);
+form.reset();
+
+form.addEventListener('Sort!', createStudent);
