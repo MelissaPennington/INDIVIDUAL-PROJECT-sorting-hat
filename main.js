@@ -53,43 +53,6 @@ const filter = (array, houseString) => {
   return houseArray;
 };
 
-// const showAllButton = document.querySelector("#All");
-// const showGryffindorButton = document.querySelector("#Gryffindor");
-// const showHufflepuffButton = document.querySelector("#Hufflepuff");
-// const showSlytherinButton= document.querySelector("#Slytherin");
-
-// showAllButton.addEventListener('click', () => {
-//   cardsOnDOM(student);
-// });
-
-// showGryffindorButton.addEventListener('click', () => {
-//   const gryffindorHouseType = filter(member, 'Gryffindor');
-//   cardsOnDOM(gryffindorHouseType);
-// });
-
-// showHufflepuffButton.addEventListener('click', () => {
-//   const hufflepuffHouseType = filter(member, 'Hufflepuff');
-//   cardsOnDOM(hufflepuffHouseType);
-// });
-
-// showRavenclawButton.addEventListener('click', () => {
-//   const ravenclawHouseType = filter(member, 'Ravenclaw');
-//   cardsOnDOM(ravenclawHouseType);
-// });
-
-// showSlytherinButton.addEventListener('click', () => {
-//   const slytherinHouseType = filter(member, 'Slytherin');
-//   cardsOnDOM(slytherinHouseType);
-// });
-
-// const arr = ['ravenclaw','gryffindor','slytherin','hufflepuff'];
-// const output = document.querySelector('.filterContainer');
-// sortArr();
-// output.addEventListener('click', sortArr);
- 
-
-// const form = document.querySelector('form');
-
 const formButton = document.querySelector("#addStudentButton");
 
 
@@ -131,10 +94,40 @@ form.reset();
 formSubmission.addEventListener('submit', createStudent);
 
 
-// const addStudentButton = document.querySelector("#addStudentButton");
-// addStudentButton.addEventListener("click", renderForm);
+const showAllButton = document.querySelector("#All");
+const showGryffindorButton = document.querySelector("#Gryffindor");
+const showHufflepuffButton = document.querySelector("#Hufflepuff");
+const showSlytherinButton= document.querySelector("#Slytherin");
 
-// const addStudentButton = document.querySelector("#addStudnetForm");
-// addStudentButton.addEventListener("submit", createStudent);
+showAllButton.addEventListener('click', () => {
+  const allMembers = filter(member, 'All');
+  cardsOnDOM(member);
+});
 
-// const app = document.querySelector("#app");
+showGryffindorButton.addEventListener('click', () => {
+  const gryffindorHouseType = filter(member, 'Gryffindor');
+  cardsOnDOM(gryffindorHouseType);
+});
+
+showHufflepuffButton.addEventListener('click', () => {
+  const hufflepuffHouseType = filter(member, 'Hufflepuff');
+  cardsOnDOM(hufflepuffHouseType);
+});
+
+showRavenclawButton.addEventListener('click', () => {
+  const ravenclawHouseType = filter(member, 'Ravenclaw');
+  cardsOnDOM(ravenclawHouseType);
+});
+
+showSlytherinButton.addEventListener('click', () => {
+  const slytherinHouseType = filter(member, 'Slytherin');
+  cardsOnDOM(slytherinHouseType);
+});
+
+// const arr = ['ravenclaw','gryffindor','slytherin','hufflepuff'];
+// const output = document.querySelector('.filterContainer');
+// sortArr();
+// output.addEventListener('click', sortArr);
+ 
+
+// const form = document.querySelector('form');
