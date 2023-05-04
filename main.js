@@ -65,7 +65,7 @@ const renderForm = () => {
       <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Luna Lovegood">
       <div id="nameHelp" class="form-text"></div>
     </div>
-    <button type="submit" class="btn btn-primary">Sort!</button>
+    <button type="submit" class="btn btn-info">Sort!</button>
   </form>
   `
   renderToDOM('#addStudentForm', form);
@@ -97,31 +97,32 @@ formSubmission.addEventListener('submit', createStudent);
 const showAllButton = document.querySelector("#All");
 const showGryffindorButton = document.querySelector("#Gryffindor");
 const showHufflepuffButton = document.querySelector("#Hufflepuff");
+const showRavenclawButton= document.querySelector("#Ravenclaw");
 const showSlytherinButton= document.querySelector("#Slytherin");
 
-showAllButton.addEventListener('click', () => {
-  const allMembers = filter(member, 'All');
-  cardsOnDOM(member);
-});
-
 showGryffindorButton.addEventListener('click', () => {
-  const gryffindorHouseType = filter(member, 'Gryffindor');
+  const gryffindorHouseType = filter(student, 'Gryffindor');
   cardsOnDOM(gryffindorHouseType);
 });
 
 showHufflepuffButton.addEventListener('click', () => {
-  const hufflepuffHouseType = filter(member, 'Hufflepuff');
+  const hufflepuffHouseType = filter(student, 'Hufflepuff');
   cardsOnDOM(hufflepuffHouseType);
 });
 
 showRavenclawButton.addEventListener('click', () => {
-  const ravenclawHouseType = filter(member, 'Ravenclaw');
+  const ravenclawHouseType = filter(student, 'Ravenclaw');
   cardsOnDOM(ravenclawHouseType);
 });
 
 showSlytherinButton.addEventListener('click', () => {
-  const slytherinHouseType = filter(member, 'Slytherin');
+  const slytherinHouseType = filter(student, 'Slytherin');
   cardsOnDOM(slytherinHouseType);
+});
+
+showAllButton.addEventListener('click', () => {
+  const allStudents = filter(student, 'All');
+  cardsOnDOM(allStudents);
 });
 
 // const arr = ['ravenclaw','gryffindor','slytherin','hufflepuff'];
