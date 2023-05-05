@@ -126,6 +126,8 @@ showAllButton.addEventListener('click', () => {
   cardsOnDOM(allStudents);
 });
 
+const expelArr = []
+
 const expelledOnDOM = (array) => {
   let domString = "";
   for (const member of array) {
@@ -133,15 +135,21 @@ const expelledOnDOM = (array) => {
       <div class="card-body">
       <p class="card-text">${member.name}</p>
       <p class="card-text">${member.house}</p> 
-      <button class="btn btn-danger" id="expel--${member.id}">Expel</button>
       </div>
     </div>`;
   }
   renderToDOM("#badStudents", domString);
 };
-// const showExpelButton= document.querySelector("badStudents");
 
-// showExpelButton.addEventListener('click', () => {
-//   const voldArmyType = filter(student, 'Voldemort\' Army');
-//   cardsOnDOM(voldArmyType);
-// });
+const expelButton = document.querySelector("#firstYearContainer")
+
+expelButton.addEventListener('click', (e) => {
+  if (e.target.id.includes("expel")) {
+    const [, id] = e.target.id.split("--");
+    const index = student.findIndex(e => e.id === Number(id));
+    console.log(index);
+    expelArr.push(...student.splice(index, 1));
+    cardsOnDOM(student);
+    expelledOnDOM(expelArr);
+  }
+});
