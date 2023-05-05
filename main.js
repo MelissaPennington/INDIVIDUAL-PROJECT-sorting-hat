@@ -37,7 +37,7 @@ const cardsOnDOM = (array) => {
       </div>
     </div>`;
   }
-  renderToDOM("#app", domString);
+  renderToDOM("#firstYearContainer", domString);
 };
 
 cardsOnDOM(student);
@@ -77,13 +77,14 @@ const formSubmission = document.querySelector("#addStudentForm");
 
 const createStudent = (e) => {
   e.preventDefault();
-
+const houseArr = ["Slytherin", "Gryffindor", "Hufflepuff", "Ravenclaw"]
 const form = document.querySelector('form');
+const randNum = Math.floor(Math.random() * (3 + 1))
 
 const newStudentObj = {
   id: student.length + 1,
   name: document.querySelector("#exampleInputName1").value,
-  house: "Slytherin",
+  house: houseArr[randNum],
 };
 
 student.push(newStudentObj);
@@ -94,7 +95,7 @@ form.reset();
 formSubmission.addEventListener('submit', createStudent);
 
 
-const showAllButton = document.querySelector("#All");
+const showAllButton = document.querySelector("#show-btn");
 const showGryffindorButton = document.querySelector("#Gryffindor");
 const showHufflepuffButton = document.querySelector("#Hufflepuff");
 const showRavenclawButton= document.querySelector("#Ravenclaw");
@@ -125,10 +126,22 @@ showAllButton.addEventListener('click', () => {
   cardsOnDOM(allStudents);
 });
 
-// const arr = ['ravenclaw','gryffindor','slytherin','hufflepuff'];
-// const output = document.querySelector('.filterContainer');
-// sortArr();
-// output.addEventListener('click', sortArr);
- 
+const expelledOnDOM = (array) => {
+  let domString = "";
+  for (const member of array) {
+    domString += `<div class="card" style="width:18rem;">
+      <div class="card-body">
+      <p class="card-text">${member.name}</p>
+      <p class="card-text">${member.house}</p> 
+      <button class="btn btn-danger" id="expel--${member.id}">Expel</button>
+      </div>
+    </div>`;
+  }
+  renderToDOM("#badStudents", domString);
+};
+// const showExpelButton= document.querySelector("badStudents");
 
-// const form = document.querySelector('form');
+// showExpelButton.addEventListener('click', () => {
+//   const voldArmyType = filter(student, 'Voldemort\' Army');
+//   cardsOnDOM(voldArmyType);
+// });
